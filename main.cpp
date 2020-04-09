@@ -299,16 +299,17 @@ struct CarWash //2)
  */
 
 /*
-10) 
+ 10) Recording Studio
 5 properties:
-    1) 
-    2) 
-    3) 
-    5) 
+    1) Console
+    2) computer
+    3) AD converters
+    4) microphones
+    5) cabling
 3 things it can do:
-    1) 
-    2) 
-    3) 
+    1) record
+    2) edit
+    3) mix
  */
 
 #include <iostream>
