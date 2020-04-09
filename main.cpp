@@ -173,143 +173,142 @@ struct CarWash //2)
 
 
 /*
-1)
+1) Dog
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) hair color
+    2) breed
+    3) temperment
+    4) size
+    5) hair length
 3 things it can do:
-    1)
-    2)
-    3)
+    1) run
+    2) bark
+    3) whine
  */
 
 /*
-2)
+2) Cat
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) hair color
+    2) breed
+    3) temperment
+    4) size
+    5) hair length
 3 things it can do:
-    1)
-    2)
-    3)
+    1) meow
+    2) purr
+    3) scratch
  */
 
 /*
-3)
+3) Guitar
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) make
+    2) model
+    3) color
+    4) string count
+    5) pickup config
 3 things it can do:
-    1)
-    2)
-    3)
+    1) output sound
+    2) plug into amp
+    3) break a string
  */
 
 /*
-4)
+4) Computer
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) manufacturer
+    2) OS
+    3) amount of ram
+    4) amount of storage
+    5) cpu
 3 things it can do:
-    1)
-    2)
-    3)
+    1) calculate
+    2) record
+    3) edit
  */
 
 /*
-5)
+5) 
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) 
+    2) 
+    3) 
+    4) 
+    5) 
 3 things it can do:
-    1)
-    2)
-    3)
+    1) 
+    2) 
+    3) 
  */
 
 /*
-6)
+6) 
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) 
+    2) 
+    3)  
+    4) 
+    5) 
 3 things it can do:
-    1)
-    2)
-    3)
+    1) 
+    2) 
+    3) 
  */
 
 /*
-7)
+7) 
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) 
+    2) 
+    3) 
+    4) 
+    5) 
 3 things it can do:
-    1)
-    2)
-    3)
+    1) 
+    2) 
+    3) 
  */
 
 /*
-8)
+8) 
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) 
+    2)  
+    3)  
+    4)  
+    5)  
 3 things it can do:
-    1)
-    2)
-    3)
+    1) 
+    2) 
+    3) 
  */
 
 /*
-9)
+9) 
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) 
+    2) 
+    3) 
+    4) 
+    5) 
 3 things it can do:
-    1)
-    2)
-    3)
+    1) 
+    2) 
+    3) 
  */
 
 /*
-10)
+10) 
 5 properties:
-    1)
-    2)
-    3)
-    4)
-    5)
+    1) 
+    2) 
+    3) 
+    5) 
 3 things it can do:
-    1)
-    2)
-    3)
+    1) 
+    2) 
+    3) 
  */
 
 #include <iostream>
