@@ -1,3 +1,6 @@
+#include <iomanip>
+using namespace std;
+
 /*
 Project 3 - Part 1 / 5
 Video:  Chapter 2 Part 5
@@ -172,6 +175,274 @@ struct CarWash //2)
 };
 
 
+//1) Dog
+
+struct Dog
+{
+//    1) hair color
+    string hairColor = "brown";
+//    2) breed
+    string breed = "doberman";
+//    3) temperament
+    string temperament = "aggressive";
+//    4) weight
+    float weight = 75.7f; // pounds
+//    5) hair length
+    float hairlength = 0.5f; // inches
+
+//    3 things it can do:
+
+//    1) run
+    float run (float weight, string breed); // to determine a general speed
+//    2) bark
+    void bark(string breed, string temperament);
+//    3) whine
+    void whine(string breed, string temperament);
+//    */
+};
+
+//2) Cat
+struct cat
+{
+//    1) hair color
+    string hairColor = "black";
+//    2) breed
+    string breed = "domestic short hair";
+//    3) temperament
+    string temperament = "friendly";
+//    4) weight
+    float weight = 10.0f; // pounds
+//    5) hair length
+    float hairLength = 0.75f; // inches
+
+//3 things it can do:
+
+//    1) meow
+    void meow(string breed, string temperament);
+//    2) purr
+    void purr(string breed, string temperament);
+//    3) scratch
+    void scratch(string breed, string temperament);
+};
+
+//3) Guitar
+
+struct Guitar
+{
+//    1) brand
+string brand = "Ibanez";
+//    2) model
+string model = "rg550";
+//    3) color
+string color = "purple";
+//    4) string count
+int stringCount = 6;
+//    5) pickup config
+int pickupConfig = 2; // number of pickups
+
+//3 things it can do:
+
+//    1) output sound
+void outputSound(int pickupConfig);
+//    2) plug into amp
+void plugIntoAmp();
+//    3) break a string
+int breakAString(int stringCount);
+};
+
+//4) Computer
+
+struct Computer
+{
+//    1) manufacturer
+    string manufacturer = "Apple";
+//    2) OS
+    string operatingSystem = "Mojave 10.14";
+//    3) amount of ram
+    int ram = 32;
+//    4) amount of storage
+    int storage = 6000; // gigabytes
+//    5) cpu
+    string cpu = "6-Core Intel Xeon";
+
+//3 things it can do:
+
+//    1) calculate
+    void calculate(int ram, string cpu);
+//    2) record
+    void record(int ram, string cpu, int storage);
+//    3) edit
+    void edit(int ram, string cpu);
+// */
+};
+
+//5) Studio Console
+
+struct StudioConsole
+{
+//    1) input count
+    int inputCount = 48;
+//    2) aux out total
+    int auxOutTotal = 16;
+//    3) bus total
+    int busTotal = 8;
+//    4) manufacturer
+    string manufacturer = "API";
+//    5) model
+    string model = "API 1608-II";
+
+//    3 things it can do:
+
+//    1) change levels
+    void changeLevels(int inputCount);
+//    2) change tone
+    void changeTone();
+//    3) sum inputs
+    void sumInputs(int inputCount, int busTotal);
+};
+
+//6) Studio Computer
+
+struct StudioComputer
+{
+//    1) manufacturer
+    string manufacturer = "Apple";
+//    2) OS
+    string operatingSystem = "Mojave 10.14";
+//    3) amount of ram
+    int ram = 32;
+//    4) amount of storage
+    int storage = 6000;
+//    5) cpu
+    string cpu = "6-Core Intel Xeon";
+
+//    3 things it can do:
+
+//    1) host apps
+    int appsInstalled(int ram, int storage);
+//    2) make calculations
+    void makeCalculations(int ram, int storage);
+//    3) store files
+    int storeFiles(int storage);
+
+    struct computerModel
+    {
+        int year = 2009;
+        string model = "Mac Pro";
+
+        void renderFiles(int numberOfCores = 12);
+    };
+};
+
+//7) DAW
+
+struct DAW
+{
+//    1) company
+    string company = "Cockos";
+//    2) price
+    int price = 60;
+//    3) compatible platforms
+    int compatiblePlatforms = 2; // Windows and Mac
+//    4) channel count
+    int channelCount = 0; // no limit
+//    5) max plugin per channel
+    int maxPluginsPerChannel = 0; //no limit
+
+//    3 things it can do:
+
+//    1) record
+    void record(int channelCount);
+//    2) edit
+    void edit(int channelCount);
+//    3) mix
+    int mix(int channelCount, int maxPluginsPerChannel);
+//    */
+    struct Software
+    {
+        string name = "Reaper";
+        double versionNumber = 6.08;
+
+        double updateVersion(double versionNumber = 6.08);
+    };
+};
+
+//8) Tracking room
+
+struct TrackingRoom
+{
+//    1) square footage
+    float squareFootage = 1200.0f;
+//    2) ceiling height
+    float ceilingHeight = 15.0f;
+//    3) sound dampening
+    float soundDampening = 50.0f; // percentage of walls covered in sound absorption
+//    4) floor material
+    string floorMaterial = "oak";
+//    5) amount of rug coverage on floor
+    float rugCoverage = 60.0f; // percentage of floor covered by rugs
+//    3 things it can do:
+//    1) reflect sound
+    float reflectSound(float squareFootage, float ceilingHeight, float soundDampening,
+    string floorMaterial, float rugCoverage);
+//    2) absorb sound
+    float absorbSound(float squareFootage, float ceilingHeight, float soundDampening,
+                       string floorMaterial, float rugCoverage);
+//    3) accomodate musical equipment
+    float storeGear(int squareFootage);
+};
+
+//9) Studio Monitor
+
+struct StudioMonitor
+{
+//    1) manufacturer
+    string manufacturer = "Blue Sky";
+//    2) price
+    float price = 499.99f;
+//    3) LF driver size
+    int lowDriverSize = 3; // inches
+//    4) HF driver size
+    int highDriverSize = 1; // inches
+//    5) lowest output frequency
+    int lowestFreq = 40;
+
+//3 things it can do:
+
+//    1) output sound
+    float soundOutput = 100.0; // dB
+//    2) consume power
+    int maxPowerConsumption = 240; // watts
+//    3) provide reference to other speakers
+    void speakerReference();
+};
+
+// 10) Recording Studio
+
+ struct RecordingStudio
+ {
+//    1) Console
+    StudioConsole consoleModel;
+//    2) computer
+    StudioComputer computerModel;
+//    3) DAW
+    DAW software;
+//    4) tracking room
+    TrackingRoom drumRoom;
+//    5) Studio Monitor
+    StudioComputer blueSkyEvo;
+
+//3 things it can do:
+
+//    1) record
+    void record(int channelCount);
+//    2) edit
+    void edit(string daw, int channelCount);
+//    3) mix
+    int mix(string consoleModel, int channelCount, int maxPluginsPerChannel);
+};
+
+
 /*
 1) Dog
 5 properties:
@@ -311,6 +582,8 @@ struct CarWash //2)
     2) edit
     3) mix
  */
+
+
 
 #include <iostream>
 int main()
