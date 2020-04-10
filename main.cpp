@@ -229,73 +229,73 @@ struct CarWash //2)
  */
 
 /*
-5) 
+5) Studio Console
 5 properties:
-    1) 
-    2) 
-    3) 
-    4) 
-    5) 
+    1) input count
+    2) aux out total
+    3) bus total
+    4) manufacturer
+    5) model
 3 things it can do:
-    1) 
-    2) 
-    3) 
+    1) change levels
+    2) change tone
+    3) sum inputs 
  */
 
 /*
-6) 
+6) Studio Computer
 5 properties:
-    1) 
-    2) 
-    3)  
-    4) 
-    5) 
+    1) manufacturer
+    2) OS
+    3) amount of ram
+    4) amount of storage
+    5) cpu
 3 things it can do:
-    1) 
-    2) 
-    3) 
+    1) host apps
+    2) make calculations
+    3) store files
  */
 
 /*
-7) 
+7) DAW
 5 properties:
-    1) 
-    2) 
-    3) 
-    4) 
-    5) 
+    1) company
+    2) price
+    3) compatible platforms
+    4) channel count
+    5) max plugin per channel
 3 things it can do:
-    1) 
-    2) 
-    3) 
+    1) record
+    2) edit 
+    3) mix
  */
 
 /*
-8) 
+8) Tracking room
 5 properties:
-    1) 
-    2)  
-    3)  
-    4)  
-    5)  
+    1) square footage
+    2) ceiling height
+    3) sound dampening
+    4) floor material
+    5) amount of rug coverage on floor
 3 things it can do:
-    1) 
-    2) 
-    3) 
+    1) reflect sound
+    2) absorb sound
+    3) accomodate musical equipment
  */
 
 /*
-9) 
+9) Studio Monitor
 5 properties:
-    1) 
-    2) 
-    3) 
-    4) 
-    5) 
+    1) manufacturer
+    2) price
+    3) LF driver size
+    4) HF driver size
+    5) lowest output frequency
 3 things it can do:
-    1) 
-    2) 
-    3) 
+    1) output sound
+    2) consume power
+    3) provide reference to other speakers
  */
 
 /*
@@ -303,9 +303,9 @@ struct CarWash //2)
 5 properties:
     1) Console
     2) computer
-    3) AD converters
-    4) microphones
-    5) cabling
+    3) DAW
+    4) tracking room
+    5) Studio Monitor
 3 things it can do:
     1) record
     2) edit
