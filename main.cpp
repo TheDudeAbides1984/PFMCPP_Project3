@@ -1,5 +1,4 @@
 #include <iomanip>
-using namespace std;
 
 /*
 Project 3 - Part 1 / 5
@@ -180,11 +179,11 @@ struct CarWash //2)
 struct Dog
 {
 //    1) hair color
-    string hairColor = "brown";
+    std::string hairColor = "brown";
 //    2) breed
-    string breed = "doberman";
+    std::string breed = "doberman";
 //    3) temperament
-    string temperament = "aggressive";
+    std::string temperament = "aggressive";
 //    4) weight
     float weight = 75.7f; // pounds
 //    5) hair length
@@ -193,23 +192,23 @@ struct Dog
 //    3 things it can do:
 
 //    1) run
-    float run (float weight, string breed); // to determine a general speed
+    float run (float weight, std::string breed); // to determine a general speed
 //    2) bark
-    void bark(string breed, string temperament);
+    void bark(std::string breed, std::string temperament);
 //    3) whine
-    void whine(string breed, string temperament);
+    void whine(std::string breed, std::string temperament);
 //    */
 };
 
 //2) Cat
-struct cat
+struct Cat
 {
 //    1) hair color
-    string hairColor = "black";
+    std::string hairColor = "black";
 //    2) breed
-    string breed = "domestic short hair";
+    std::string breed = "domestic short hair";
 //    3) temperament
-    string temperament = "friendly";
+    std::string temperament = "friendly";
 //    4) weight
     float weight = 10.0f; // pounds
 //    5) hair length
@@ -218,11 +217,11 @@ struct cat
 //3 things it can do:
 
 //    1) meow
-    void meow(string breed, string temperament);
+    void meow(std::string breed, std::string temperament);
 //    2) purr
-    void purr(string breed, string temperament);
+    void purr(std::string breed, std::string temperament);
 //    3) scratch
-    void scratch(string breed, string temperament);
+    void scratch(std::string breed, std::string temperament);
 };
 
 //3) Guitar
@@ -230,24 +229,24 @@ struct cat
 struct Guitar
 {
 //    1) brand
-string brand = "Ibanez";
+    std::string brand = "Ibanez";
 //    2) model
-string model = "rg550";
+    std::string model = "rg550";
 //    3) color
-string color = "purple";
+    std::string color = "purple";
 //    4) string count
-int stringCount = 6;
+    int stringCount = 6;
 //    5) pickup config
-int pickupConfig = 2; // number of pickups
+    int pickupConfig = 2; // number of pickups
 
 //3 things it can do:
 
 //    1) output sound
-void outputSound(int pickupConfig);
+    void outputSound(int pickupConfig);
 //    2) plug into amp
-void plugIntoAmp();
+    void plugIntoAmp();
 //    3) break a string
-int breakAString(int stringCount);
+    int breakAString(int stringCount);
 };
 
 //4) Computer
@@ -255,24 +254,24 @@ int breakAString(int stringCount);
 struct Computer
 {
 //    1) manufacturer
-    string manufacturer = "Apple";
+    std::string manufacturer = "Apple";
 //    2) OS
-    string operatingSystem = "Mojave 10.14";
+    std::string operatingSystem = "Mojave 10.14";
 //    3) amount of ram
     int ram = 32;
 //    4) amount of storage
     int storage = 6000; // gigabytes
 //    5) cpu
-    string cpu = "6-Core Intel Xeon";
+    std::string cpu = "6-Core Intel Xeon";
 
 //3 things it can do:
 
 //    1) calculate
-    void calculate(int ram, string cpu);
+    void calculate(int ram, std::string cpu);
 //    2) record
-    void record(int ram, string cpu, int storage);
+    void record(int ram, std::string cpu, int storage);
 //    3) edit
-    void edit(int ram, string cpu);
+    void edit(int ram, std::string cpu);
 // */
 };
 
@@ -287,9 +286,9 @@ struct StudioConsole
 //    3) bus total
     int busTotal = 8;
 //    4) manufacturer
-    string manufacturer = "API";
+    std::string manufacturer = "API";
 //    5) model
-    string model = "API 1608-II";
+    std::string model = "API 1608-II";
 
 //    3 things it can do:
 
@@ -306,15 +305,15 @@ struct StudioConsole
 struct StudioComputer
 {
 //    1) manufacturer
-    string manufacturer = "Apple";
+    std::string manufacturer = "Apple";
 //    2) OS
-    string operatingSystem = "Mojave 10.14";
+    std::string operatingSystem = "Mojave 10.14";
 //    3) amount of ram
     int ram = 32;
 //    4) amount of storage
     int storage = 6000;
 //    5) cpu
-    string cpu = "6-Core Intel Xeon";
+    std::string cpu = "6-Core Intel Xeon";
 
 //    3 things it can do:
 
@@ -328,7 +327,7 @@ struct StudioComputer
     struct computerModel
     {
         int year = 2009;
-        string model = "Mac Pro";
+        std::string model = "Mac Pro";
 
         void renderFiles(int numberOfCores = 12);
     };
@@ -339,7 +338,7 @@ struct StudioComputer
 struct DAW
 {
 //    1) company
-    string company = "Cockos";
+    std::string company = "Cockos";
 //    2) price
     int price = 60;
 //    3) compatible platforms
@@ -360,7 +359,7 @@ struct DAW
 //    */
     struct Software
     {
-        string name = "Reaper";
+        std::string name = "Reaper";
         double versionNumber = 6.08;
 
         double updateVersion(double versionNumber = 6.08);
@@ -378,16 +377,16 @@ struct TrackingRoom
 //    3) sound dampening
     float soundDampening = 50.0f; // percentage of walls covered in sound absorption
 //    4) floor material
-    string floorMaterial = "oak";
+    std::string floorMaterial = "oak";
 //    5) amount of rug coverage on floor
     float rugCoverage = 60.0f; // percentage of floor covered by rugs
 //    3 things it can do:
 //    1) reflect sound
     float reflectSound(float squareFootage, float ceilingHeight, float soundDampening,
-    string floorMaterial, float rugCoverage);
+    std::string floorMaterial, float rugCoverage);
 //    2) absorb sound
     float absorbSound(float squareFootage, float ceilingHeight, float soundDampening,
-                       string floorMaterial, float rugCoverage);
+    std::string floorMaterial, float rugCoverage);
 //    3) accomodate musical equipment
     float storeGear(int squareFootage);
 };
@@ -397,7 +396,7 @@ struct TrackingRoom
 struct StudioMonitor
 {
 //    1) manufacturer
-    string manufacturer = "Blue Sky";
+    std::string manufacturer = "Blue Sky";
 //    2) price
     float price = 499.99f;
 //    3) LF driver size
@@ -437,9 +436,9 @@ struct StudioMonitor
 //    1) record
     void record(int channelCount);
 //    2) edit
-    void edit(string daw, int channelCount);
+    void edit(std::string daw, int channelCount);
 //    3) mix
-    int mix(string consoleModel, int channelCount, int maxPluginsPerChannel);
+    int mix(std::string consoleModel, int channelCount, int maxPluginsPerChannel);
 };
 
 
