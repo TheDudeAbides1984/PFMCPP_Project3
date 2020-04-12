@@ -382,11 +382,17 @@ struct TrackingRoom
     float rugCoverage = 60.0f; // percentage of floor covered by rugs
 //    3 things it can do:
 //    1) reflect sound
-    float reflectSound(float squareFootage, float ceilingHeight, float soundDampening,
-    std::string floorMaterial, float rugCoverage);
+    float reflectSound(float squareFootage, 
+                       float ceilingHeight, 
+                       float soundDampening,
+                       std::string floorMaterial, 
+                       float rugCoverage);
 //    2) absorb sound
-    float absorbSound(float squareFootage, float ceilingHeight, float soundDampening,
-    std::string floorMaterial, float rugCoverage);
+    float absorbSound(float squareFootage, 
+                      float ceilingHeight, 
+                      float soundDampening,
+                      std::string floorMaterial, 
+                      float rugCoverage);
 //    3) accomodate musical equipment
     float storeGear(int squareFootage);
 };
