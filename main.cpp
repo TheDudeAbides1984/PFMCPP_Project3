@@ -79,20 +79,23 @@ float Dog::run(float weightInPounds, std::string dogBreed)
     if(dogBreed == "doberman" && weightInPounds <= 70)
     {
         maxSpeed = 35; // mph
+    } else 
+    {
+        maxSpeed = 25;
     }
     return maxSpeed;
 }
 
 void Dog::bark(std::string dogBreed, std::string mannerTemperament)
 {
-    dogBreed = "doberman";
-    mannerTemperament = "aggressive";
+    breed = dogBreed;
+    temperament = mannerTemperament;
 }
 
 void Dog::whine(std::string dogBreed, std::string mannerTemperament)
 {
-    dogBreed = "doberman";
-    mannerTemperament = "aggressive";
+    breed = dogBreed;
+    temperament = mannerTemperament;
 }
 
 struct Cat
@@ -109,20 +112,20 @@ struct Cat
 
 void Cat::meow(std::string catBreed, std::string mannerTemperament)
 {
-    catBreed = "domestic shorthair";
-    mannerTemperament = "friendly";
+    breed = catBreed;
+    temperament = mannerTemperament;
 }
 
 void Cat::purr(std::string catBreed, std::string mannerTemperament)
 {
-    catBreed = "domestic shorthair";
-    mannerTemperament = "friendly";
+    breed = catBreed;
+    temperament = mannerTemperament;
 }
 
 void Cat::scratch(std::string catBreed, std::string mannerTemperament)
 {
-    catBreed = "domestic shorthair";
-    mannerTemperament = "friendly";
+    breed = catBreed;
+    temperament = mannerTemperament;
 }
 
 struct Guitar
@@ -140,14 +143,14 @@ struct Guitar
 
 void Guitar::outputSound(int numOfPickups)
 {
-    numOfPickups = 2;
+    pickupConfig = numOfPickups;
 }
 
 void Guitar::plugIntoAmp() {}
 
 int Guitar::breakAString(int numOfStrings)
 {
-    numOfStrings = 5;
+    stringCount = numOfStrings;
     return numOfStrings;
 }
 
@@ -166,21 +169,21 @@ struct Computer
 
 void Computer::calculate(int ramInGB, std::string cpuModel)
 {
-    ramInGB = 32;
-    cpuModel = "6-Core Intel Xeon";
+    ram = ramInGB;
+    cpu = cpuModel;
 }
 
 void Computer::record(int ramInGB, std::string cpuModel, int storageInGB)
 {
-    ramInGB = 32;
-    cpuModel = "6-Core Intel Xeon";
-    storageInGB = 6000;
+    ram = ramInGB;
+    cpu = cpuModel;
+    storage = storageInGB;
 }
 
 void Computer::edit(int ramInGB, std::string cpuModel)
 {
-    ramInGB = 32;
-    cpuModel = "6-Core Intel Xeon";
+    ram = ramInGB;
+    cpu = cpuModel;
 }
 
 struct StudioConsole
@@ -198,15 +201,15 @@ struct StudioConsole
 
 void StudioConsole::changeLevels(int inputChannelCount)
 {
-    inputChannelCount = 48;
+    inputCount = inputChannelCount;
 }
 
 void StudioConsole::changeTone(){}
 
 void StudioConsole::sumInputs(int inputChannelCount, int summingBusTotal)
 {
-    inputChannelCount = 48;
-    summingBusTotal = 16;
+    inputCount = inputChannelCount;
+    busTotal = summingBusTotal;
 }
 
 struct StudioComputer
@@ -225,36 +228,37 @@ struct StudioComputer
     {
         int year = 2009;
         std::string model = "Mac Pro";
+        int coreCount;
 
-        void renderFiles(int numberOfCores = 12);
+        void renderFiles(int coreCount = 12);
     };
 };
 
 int StudioComputer::appsInstalled(int ramInGB, int storageInGB)
 {
     int totalApps = 30;
-    ramInGB = 32;
-    storageInGB = 6000;
+    ram = ramInGB;
+    storage = storageInGB;
 
     return totalApps;
 }
 
 void StudioComputer::makeCalculations(int ramInGB, int storageInGB)
 {
-    ramInGB = 32;
-    storageInGB = 6000;    
+    ram = ramInGB;
+    storage = storageInGB;  
 }
 
 int StudioComputer::storeFiles(int storageInGB)
 {
-    storageInGB = 6000;    
+    storage = storageInGB;  
 
     return storageInGB;
 }
 
 void StudioComputer::ComputerModel::renderFiles(int numOfCores)
 {
-    numOfCores = 12;
+    coreCount = numOfCores;
 }
 
 struct DAW
@@ -264,6 +268,7 @@ struct DAW
     int compatiblePlatforms = 2; // Windows and Mac
     int channelCount = 0; // no limit
     int maxPluginsPerChannel = 0; //no limit
+    float versionNumber;
 
     void record(int channelCount);
     void edit(int channelCount);
@@ -280,23 +285,23 @@ struct DAW
 
 void DAW::record(int maxChannelCount)
 {
-    maxChannelCount = 128;
+    channelCount = maxChannelCount;
 }
 
 void DAW::edit(int maxChannelCount)
 {
-    maxChannelCount = 128;
+    channelCount = maxChannelCount;
 }
 
 void DAW::mix(int maxChannelCount, int maxPlugsPerChannel)
 {
-    maxChannelCount = 128;
-    maxPlugsPerChannel = 10;
+    channelCount = maxChannelCount;
+    maxPluginsPerChannel = maxPlugsPerChannel;
 }
 
 double DAW::Software::updateVersion(double currentVersionNumber)
 {
-    currentVersionNumber = 6.08;
+    versionNumber = currentVersionNumber;
 
     return currentVersionNumber;
 }
@@ -329,11 +334,11 @@ float TrackingRoom::reflectSound(float squareFootageInFeet,
                                  float rugCoveragePercentage) 
 {
     float reflectedSound = 100 - soundDampeningPercentage;
-    squareFootageInFeet = 400;
-    ceilingHeightInFeet = 25;
-    soundDampeningPercentage = 60;
-    floorMaterialType = "oak";
-    rugCoveragePercentage = 80;
+    squareFootage = squareFootageInFeet;
+    ceilingHeight = ceilingHeightInFeet;
+    soundDampening = soundDampeningPercentage;
+    floorMaterial = floorMaterialType;
+    rugCoverage = rugCoveragePercentage;
 
     return reflectedSound;
 }
@@ -344,18 +349,18 @@ float TrackingRoom::absorbSound(float squareFootageInFeet,
                                 std::string floorMaterialType, 
                                 float rugCoveragePercentage) 
 {
-    squareFootageInFeet = 400;
-    ceilingHeightInFeet = 25;
-    soundDampeningPercentage = 60;
-    floorMaterialType = "oak";
-    rugCoveragePercentage = 80;
+    squareFootage = squareFootageInFeet;
+    ceilingHeight = ceilingHeightInFeet;
+    soundDampening = soundDampeningPercentage;
+    floorMaterial = floorMaterialType;
+    rugCoverage = rugCoveragePercentage;
 
     return soundDampeningPercentage;
 }
 
 float TrackingRoom::storeGear(int squareFootageInFeet)
 {
-    squareFootageInFeet = 400;
+    squareFootage = squareFootageInFeet;
 
     return squareFootageInFeet;
 }
@@ -381,31 +386,30 @@ struct RecordingStudio
     StudioComputer computerModel;
     DAW software;
     TrackingRoom drumRoom;
-    StudioComputer blueSkyEvo;
+    StudioMonitor blueSkyEvo;
 
-    void record(int channelCount);
-    void edit(std::string daw, int channelCount);
-    void mix(std::string consoleModel, int channelCount, int maxPluginsPerChannel);
+    void record(DAW software, StudioComputer computerModel, StudioConsole consoleModel);
+    void edit(DAW software, StudioComputer computerModel);
+    void mix(StudioConsole console, DAW software);
 };
 
-void RecordingStudio::record(int maxChannelCount)
+void RecordingStudio::record(DAW Reaper, StudioComputer MacPro, StudioConsole Neve)
 {
-    maxChannelCount = 48;
+    software = Reaper;
+    computerModel = MacPro;
+    consoleModel = Neve;
 }
 
-void RecordingStudio::edit(std::string DAWSoftware, int maxChannelCount)
+void RecordingStudio::edit(DAW Reaper, StudioComputer MacPro)
 {
-    DAWSoftware = "Reaper";
-    maxChannelCount = 48;
+    software = Reaper;
+    computerModel = MacPro;
 }
 
-void RecordingStudio::mix(std::string consoleBrand, 
-                          int maxChannelCount, 
-                          int maxPlugsPerChannel)
+void RecordingStudio::mix(StudioConsole Neve, DAW Reaper)
 {
-    consoleBrand = "Neve";
-    maxChannelCount = 48;
-    maxPlugsPerChannel = 10;
+    consoleModel = Neve;
+    software = Reaper;
 }
 
 /*
