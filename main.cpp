@@ -79,7 +79,8 @@ float Dog::run(float weightInPounds, std::string dogBreed)
     if(dogBreed == "doberman" && weightInPounds <= 70)
     {
         maxSpeed = 35; // mph
-    } else 
+    } 
+    else 
     {
         maxSpeed = 25;
     }
@@ -393,23 +394,25 @@ struct RecordingStudio
     void mix(StudioConsole console, DAW software);
 };
 
-void RecordingStudio::record(DAW Reaper, StudioComputer MacPro, StudioConsole Neve)
+void RecordingStudio::record(DAW reaper, 
+                             StudioComputer macPro, 
+                             StudioConsole neve)
 {
-    software = Reaper;
-    computerModel = MacPro;
-    consoleModel = Neve;
+    software = reaper;
+    computerModel = macPro;
+    consoleModel = neve;
 }
 
-void RecordingStudio::edit(DAW Reaper, StudioComputer MacPro)
+void RecordingStudio::edit(DAW reaper, StudioComputer macPro)
 {
-    software = Reaper;
-    computerModel = MacPro;
+    software = reaper;
+    computerModel = macPro;
 }
 
-void RecordingStudio::mix(StudioConsole Neve, DAW Reaper)
+void RecordingStudio::mix(StudioConsole neve, DAW reaper)
 {
-    consoleModel = Neve;
-    software = Reaper;
+    consoleModel = neve;
+    software = reaper;
 }
 
 /*
