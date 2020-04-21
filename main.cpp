@@ -62,12 +62,20 @@ int main()
 
 struct Dog
 {
+    Dog()
+    {
+        hairColor = "";
+        breed = "";
+        temperament  = "";
+        weight = 0.0f;
+        hairlength = 0.0f;
+    }
     std::string hairColor = "brown";
     std::string breed = "doberman";
     std::string temperament = "aggressive";
     float weight = 75.7f; // pounds
     float hairlength = 0.5f; // inches
-    
+
     float run (float weight, std::string breed); // to determine a general speed
     void bark(std::string breed, std::string temperament);
     void whine(std::string breed, std::string temperament);
@@ -80,8 +88,8 @@ float Dog::run(float weightInPounds, std::string dogBreed)
     if(dogBreed == "doberman" && weightInPounds <= 70)
     {
         maxSpeed = 35; // mph
-    } 
-    else 
+    }
+    else
     {
         maxSpeed = 25;
     }
@@ -92,6 +100,10 @@ void Dog::bark(std::string dogBreed, std::string mannerTemperament)
 {
     breed = dogBreed;
     temperament = mannerTemperament;
+
+    std::cout << "This dog is a " << temperament << " " << dogBreed
+    << ". Thankfully it doesn't bark too much. " << std::endl;
+    std::cout << std::endl;
 }
 
 void Dog::whine(std::string dogBreed, std::string mannerTemperament)
@@ -102,6 +114,13 @@ void Dog::whine(std::string dogBreed, std::string mannerTemperament)
 
 struct Cat
 {
+    Cat()
+    {
+        hairColor = "";
+        breed = "";
+        temperament  = "";
+        hairLength = 0.0f;
+    }
     std::string hairColor = "black";
     std::string breed = "domestic short hair";
     std::string temperament = "friendly";
@@ -132,6 +151,14 @@ void Cat::scratch(std::string catBreed, std::string mannerTemperament)
 
 struct Guitar
 {
+    Guitar()
+    {
+        brand = "";
+        model = "";
+        color = "";
+        stringCount = 0;
+        pickupConfig = 0;
+    }
     std::string brand = "Ibanez";
     std::string model = "rg550";
     std::string color = "purple";
@@ -158,6 +185,14 @@ int Guitar::breakAString(int numOfStrings)
 
 struct Computer
 {
+    Computer()
+    {
+        manufacturer = "";
+        operatingSystem = "";
+        ram = 0;
+        storage = 0;
+        cpu = "";
+    }
     std::string manufacturer = "Apple";
     std::string operatingSystem = "Mojave 10.14";
     int ram = 32;
@@ -180,6 +215,17 @@ void Computer::record(int ramInGB, std::string cpuModel, int storageInGB)
     ram = ramInGB;
     cpu = cpuModel;
     storage = storageInGB;
+
+    if (ramInGB < 16 && storageInGB < 100)
+    {
+        std::cout << "You should consider upgrading your machine by adding more memory and more storage. " << std::endl;
+    }
+    else
+    {
+        std::cout << "Your machine has " << ramInGB << " ram and " << storageInGB
+        << " gb of hard drive space. It should work for recording." << std::endl;
+        std::cout << std::endl;
+    }
 }
 
 void Computer::edit(int ramInGB, std::string cpuModel)
@@ -190,6 +236,14 @@ void Computer::edit(int ramInGB, std::string cpuModel)
 
 struct StudioConsole
 {
+    StudioConsole()
+    {
+        inputCount = 0;
+        auxOutTotal = 0;
+        busTotal = 0;
+        manufacturer = "";
+        model = "";
+    }
     int inputCount = 48;
     int auxOutTotal = 16;
     int busTotal = 8;
@@ -198,7 +252,7 @@ struct StudioConsole
 
     void changeLevels(int inputCount);
     void changeTone();
-    void sumInputs(int inputCount, int busTotal);
+    void sumInputs(int inputCount, int busTotal, int auxOutTotal);
 };
 
 void StudioConsole::changeLevels(int inputChannelCount)
@@ -208,26 +262,46 @@ void StudioConsole::changeLevels(int inputChannelCount)
 
 void StudioConsole::changeTone(){}
 
-void StudioConsole::sumInputs(int inputChannelCount, int summingBusTotal)
+void StudioConsole::sumInputs(int inputChannelCount, int summingBusTotal, int auxTotal)
 {
     inputCount = inputChannelCount;
     busTotal = summingBusTotal;
+    auxOutTotal = auxTotal;
+
+    std::cout << "The console has " << inputCount << " inputs and " << auxTotal 
+              << " aux outputs. Those inputs can be summed into a total of " << busTotal << " busses for mixdown." << std::endl;
+    std::cout << std::endl;
 }
 
 struct StudioComputer
 {
+    StudioComputer()
+    {
+        manufacturer = "";
+        operatingSystem = "";
+        ram = 0;
+        storage = 0;
+        cpu = "";
+    }
     std::string manufacturer = "Apple";
     std::string operatingSystem = "Mojave 10.14";
     int ram = 32;
     int storage = 6000;
     std::string cpu = "6-Core Intel Xeon";
-    
+
     int appsInstalled(int ram, int storage);
     void makeCalculations(int ram, int storage);
     int storeFiles(int storage);
 
     struct ComputerModel
     {
+        ComputerModel()
+        {
+            year = 0;
+            model = "";
+            coreCount = 0;
+        }
+
         int year = 2009;
         std::string model = "Mac Pro";
         int coreCount;
@@ -248,12 +322,12 @@ int StudioComputer::appsInstalled(int ramInGB, int storageInGB)
 void StudioComputer::makeCalculations(int ramInGB, int storageInGB)
 {
     ram = ramInGB;
-    storage = storageInGB;  
+    storage = storageInGB;
 }
 
 int StudioComputer::storeFiles(int storageInGB)
 {
-    storage = storageInGB;  
+    storage = storageInGB;
 
     return storageInGB;
 }
@@ -265,6 +339,16 @@ void StudioComputer::ComputerModel::renderFiles(int numOfCores)
 
 struct DAW
 {
+    DAW()
+    {
+        company = "";
+        price = 0;
+        compatiblePlatforms = 0;
+        channelCount = 0;
+        maxPluginsPerChannel = 0;
+        versionNumber = 0.0f;
+    }
+
     std::string company = "Cockos";
     int price = 60;
     int compatiblePlatforms = 2; // Windows and Mac
@@ -278,12 +362,19 @@ struct DAW
 
     struct Software
     {
+        Software();
         std::string name = "Reaper";
         double versionNumber = 6.08;
 
         double updateVersion(double versionNumber = 6.08);
     };
 };
+
+DAW::Software::Software()
+{
+    name = "";
+    versionNumber = 0.0;
+}
 
 void DAW::record(int maxChannelCount)
 {
@@ -310,30 +401,38 @@ double DAW::Software::updateVersion(double currentVersionNumber)
 
 struct TrackingRoom
 {
+    TrackingRoom()
+    {
+        squareFootage = 0.0f;
+        ceilingHeight = 0.0f;
+        soundDampening = 0.0f;
+        floorMaterial = "";
+        rugCoverage = 0.0f;
+    }
     float squareFootage = 1200.0f;
     float ceilingHeight = 15.0f;
     float soundDampening = 50.0f; // percentage of walls covered in sound absorption
     std::string floorMaterial = "oak";
     float rugCoverage = 60.0f; // percentage of floor covered by rugs
 
-    float reflectSound(float squareFootage, 
-                       float ceilingHeight, 
+    float reflectSound(float squareFootage,
+                       float ceilingHeight,
                        float soundDampening,
-                       std::string floorMaterial, 
+                       std::string floorMaterial,
                        float rugCoverage);
-    float absorbSound(float squareFootage, 
-                      float ceilingHeight, 
+    float absorbSound(float squareFootage,
+                      float ceilingHeight,
                       float soundDampening,
-                      std::string floorMaterial, 
+                      std::string floorMaterial,
                       float rugCoverage);
     float storeGear(int squareFootage);
 };
 
-float TrackingRoom::reflectSound(float squareFootageInFeet, 
-                                 float ceilingHeightInFeet, 
+float TrackingRoom::reflectSound(float squareFootageInFeet,
+                                 float ceilingHeightInFeet,
                                  float soundDampeningPercentage,
-                                 std::string floorMaterialType, 
-                                 float rugCoveragePercentage) 
+                                 std::string floorMaterialType,
+                                 float rugCoveragePercentage)
 {
     float reflectedSound = 100 - soundDampeningPercentage;
     squareFootage = squareFootageInFeet;
@@ -342,14 +441,20 @@ float TrackingRoom::reflectSound(float squareFootageInFeet,
     floorMaterial = floorMaterialType;
     rugCoverage = rugCoveragePercentage;
 
+    std::cout << "The amount of sound this room will reflect depends on the percentage"
+              << " \nof walls covered in soundproofing and rugs covering the hardwood floors."
+              << " \nIn the case, " << soundDampeningPercentage << " of the walls are covered"
+              << " and " << rugCoveragePercentage << " of the hardwood floors are covered." << std::endl;
+    std::cout << std::endl;
+
     return reflectedSound;
 }
 
-float TrackingRoom::absorbSound(float squareFootageInFeet, 
-                                float ceilingHeightInFeet, 
+float TrackingRoom::absorbSound(float squareFootageInFeet,
+                                float ceilingHeightInFeet,
                                 float soundDampeningPercentage,
-                                std::string floorMaterialType, 
-                                float rugCoveragePercentage) 
+                                std::string floorMaterialType,
+                                float rugCoveragePercentage)
 {
     squareFootage = squareFootageInFeet;
     ceilingHeight = ceilingHeightInFeet;
@@ -369,6 +474,7 @@ float TrackingRoom::storeGear(int squareFootageInFeet)
 
 struct StudioMonitor
 {
+    StudioMonitor();
     std::string manufacturer = "Blue Sky";
     float price = 499.99f;
     int lowDriverSize = 3; // inches
@@ -380,10 +486,29 @@ struct StudioMonitor
     void speakerReference();
 };
 
+StudioMonitor::StudioMonitor()
+{
+    manufacturer = "";
+    price = 0.0f;
+    lowDriverSize = 0;
+    highDriverSize = 0;
+    lowestFreq = 0;
+    soundOutput = 0.0f;
+    maxPowerConsumption = 0;
+}
+
 void StudioMonitor::speakerReference(){}
 
 struct RecordingStudio
 {
+    RecordingStudio()
+    {
+        StudioConsole studioConsole;
+        StudioComputer studioComputer;
+        DAW daw;
+        TrackingRoom trackingRoom;
+        StudioMonitor studioMonitor;
+    }
     StudioConsole consoleModel;
     StudioComputer computerModel;
     DAW software;
@@ -395,8 +520,8 @@ struct RecordingStudio
     void mix(StudioConsole console, DAW software);
 };
 
-void RecordingStudio::record(DAW reaper, 
-                             StudioComputer macPro, 
+void RecordingStudio::record(DAW reaper,
+                             StudioComputer macPro,
                              StudioConsole neve)
 {
     software = reaper;
@@ -561,6 +686,39 @@ void RecordingStudio::mix(StudioConsole neve, DAW reaper)
 #include <iostream>
 int main()
 {
+Dog bob;
+    bob.bark("labrador", "friendly");
+
+    TrackingRoom littleMountain;
+    littleMountain.reflectSound(34.23f, 23.5f,
+            23.5f, "oak", 23.4f);
+
+    Computer myMac;
+    myMac.record(32, "12-Core Xeon", 6000);
+
+    StudioConsole ssl;
+    ssl.sumInputs(48,3, 16);
+
+    StudioMonitor blueSky;
+    blueSky.lowDriverSize = 3;
+    blueSky.highDriverSize = 1;
+    blueSky.lowestFreq = 35;
+
+    std::cout << "A good bang for buck set of monitors is the Blue Sky system. "
+                 << "It outputs down to " << blueSky.lowestFreq << " hz and has a "
+                 << blueSky.lowDriverSize << " inch woofer and a " << blueSky.highDriverSize
+                 << " inch horn." << std::endl;
+    std::cout << std::endl;
+
+    Guitar guitar;
+    guitar.brand = "ESP";
+    guitar.model = "LTD";
+    guitar.color = "black";
+
+    std::cout << "This guitar is a " << guitar.color << " model " << guitar.model << " made by " << guitar.brand << std::endl;
+    std::cout << std::endl;
+
+
     Example::main();
     std::cout << "good to go!" << std::endl;
 }
