@@ -62,14 +62,7 @@ int main()
 
 struct Dog
 {
-    Dog()
-    {
-        hairColor = "";
-        breed = "";
-        temperament  = "";
-        weight = 0.0f;
-        hairlength = 0.0f;
-    }
+    Dog();
     std::string hairColor = "brown";
     std::string breed = "doberman";
     std::string temperament = "aggressive";
@@ -80,6 +73,15 @@ struct Dog
     void bark(std::string breed, std::string temperament);
     void whine(std::string breed, std::string temperament);
 };
+
+Dog::Dog()
+{
+    hairColor = "";
+    breed = "";
+    temperament  = "";
+    weight = 0.0f;
+    hairlength = 0.0f;
+}
 
 float Dog::run(float weightInPounds, std::string dogBreed)
 {
@@ -114,13 +116,7 @@ void Dog::whine(std::string dogBreed, std::string mannerTemperament)
 
 struct Cat
 {
-    Cat()
-    {
-        hairColor = "";
-        breed = "";
-        temperament  = "";
-        hairLength = 0.0f;
-    }
+    Cat();
     std::string hairColor = "black";
     std::string breed = "domestic short hair";
     std::string temperament = "friendly";
@@ -130,6 +126,14 @@ struct Cat
     void purr(std::string breed, std::string temperament);
     void scratch(std::string breed, std::string temperament);
 };
+
+Cat::Cat()
+{
+    hairColor = "";
+    breed = "";
+    temperament  = "";
+    hairLength = 0.0f;
+}
 
 void Cat::meow(std::string catBreed, std::string mannerTemperament)
 {
@@ -151,14 +155,7 @@ void Cat::scratch(std::string catBreed, std::string mannerTemperament)
 
 struct Guitar
 {
-    Guitar()
-    {
-        brand = "";
-        model = "";
-        color = "";
-        stringCount = 0;
-        pickupConfig = 0;
-    }
+    Guitar();
     std::string brand = "Ibanez";
     std::string model = "rg550";
     std::string color = "purple";
@@ -169,6 +166,15 @@ struct Guitar
     void plugIntoAmp();
     int breakAString(int stringCount);
 };
+
+Guitar::Guitar()
+{
+    brand = "";
+    model = "";
+    color = "";
+    stringCount = 0;
+    pickupConfig = 0;
+}
 
 void Guitar::outputSound(int numOfPickups)
 {
@@ -185,14 +191,7 @@ int Guitar::breakAString(int numOfStrings)
 
 struct Computer
 {
-    Computer()
-    {
-        manufacturer = "";
-        operatingSystem = "";
-        ram = 0;
-        storage = 0;
-        cpu = "";
-    }
+    Computer();
     std::string manufacturer = "Apple";
     std::string operatingSystem = "Mojave 10.14";
     int ram = 32;
@@ -203,6 +202,15 @@ struct Computer
     void record(int ram, std::string cpu, int storage);
     void edit(int ram, std::string cpu);
 };
+
+Computer::Computer()
+{
+    manufacturer = "";
+    operatingSystem = "";
+    ram = 0;
+    storage = 0;
+    cpu = "";
+}
 
 void Computer::calculate(int ramInGB, std::string cpuModel)
 {
@@ -236,14 +244,7 @@ void Computer::edit(int ramInGB, std::string cpuModel)
 
 struct StudioConsole
 {
-    StudioConsole()
-    {
-        inputCount = 0;
-        auxOutTotal = 0;
-        busTotal = 0;
-        manufacturer = "";
-        model = "";
-    }
+    StudioConsole();
     int inputCount = 48;
     int auxOutTotal = 16;
     int busTotal = 8;
@@ -254,6 +255,15 @@ struct StudioConsole
     void changeTone();
     void sumInputs(int inputCount, int busTotal, int auxOutTotal);
 };
+
+StudioConsole::StudioConsole()
+{
+    inputCount = 0;
+    auxOutTotal = 0;
+    busTotal = 0;
+    manufacturer = "";
+    model = "";
+}
 
 void StudioConsole::changeLevels(int inputChannelCount)
 {
@@ -275,14 +285,7 @@ void StudioConsole::sumInputs(int inputChannelCount, int summingBusTotal, int au
 
 struct StudioComputer
 {
-    StudioComputer()
-    {
-        manufacturer = "";
-        operatingSystem = "";
-        ram = 0;
-        storage = 0;
-        cpu = "";
-    }
+    StudioComputer();
     std::string manufacturer = "Apple";
     std::string operatingSystem = "Mojave 10.14";
     int ram = 32;
@@ -295,13 +298,8 @@ struct StudioComputer
 
     struct ComputerModel
     {
-        ComputerModel()
-        {
-            year = 0;
-            model = "";
-            coreCount = 0;
-        }
 
+        ComputerModel();
         int year = 2009;
         std::string model = "Mac Pro";
         int coreCount;
@@ -309,6 +307,22 @@ struct StudioComputer
         void renderFiles(int coreCount = 12);
     };
 };
+
+StudioComputer::StudioComputer()
+{
+    manufacturer = "";
+    operatingSystem = "";
+    ram = 0;
+    storage = 0;
+    cpu = "";
+}
+
+StudioComputer::ComputerModel::ComputerModel()
+{
+    year = 0;
+    model = "";
+    coreCount = 0;
+}
 
 int StudioComputer::appsInstalled(int ramInGB, int storageInGB)
 {
@@ -339,16 +353,7 @@ void StudioComputer::ComputerModel::renderFiles(int numOfCores)
 
 struct DAW
 {
-    DAW()
-    {
-        company = "";
-        price = 0;
-        compatiblePlatforms = 0;
-        channelCount = 0;
-        maxPluginsPerChannel = 0;
-        versionNumber = 0.0f;
-    }
-
+    DAW();
     std::string company = "Cockos";
     int price = 60;
     int compatiblePlatforms = 2; // Windows and Mac
@@ -369,6 +374,16 @@ struct DAW
         double updateVersion(double versionNumber = 6.08);
     };
 };
+
+DAW::DAW()
+{
+    company = "";
+    price = 0;
+    compatiblePlatforms = 0;
+    channelCount = 0;
+    maxPluginsPerChannel = 0;
+    versionNumber = 0.0f;
+}
 
 DAW::Software::Software()
 {
@@ -401,14 +416,7 @@ double DAW::Software::updateVersion(double currentVersionNumber)
 
 struct TrackingRoom
 {
-    TrackingRoom()
-    {
-        squareFootage = 0.0f;
-        ceilingHeight = 0.0f;
-        soundDampening = 0.0f;
-        floorMaterial = "";
-        rugCoverage = 0.0f;
-    }
+    TrackingRoom();
     float squareFootage = 1200.0f;
     float ceilingHeight = 15.0f;
     float soundDampening = 50.0f; // percentage of walls covered in sound absorption
@@ -427,6 +435,15 @@ struct TrackingRoom
                       float rugCoverage);
     float storeGear(int squareFootage);
 };
+
+TrackingRoom::TrackingRoom()
+{
+    squareFootage = 0.0f;
+    ceilingHeight = 0.0f;
+    soundDampening = 0.0f;
+    floorMaterial = "";
+    rugCoverage = 0.0f;
+}
 
 float TrackingRoom::reflectSound(float squareFootageInFeet,
                                  float ceilingHeightInFeet,
@@ -501,14 +518,7 @@ void StudioMonitor::speakerReference(){}
 
 struct RecordingStudio
 {
-    RecordingStudio()
-    {
-        StudioConsole studioConsole;
-        StudioComputer studioComputer;
-        DAW daw;
-        TrackingRoom trackingRoom;
-        StudioMonitor studioMonitor;
-    }
+    RecordingStudio();
     StudioConsole consoleModel;
     StudioComputer computerModel;
     DAW software;
@@ -519,6 +529,11 @@ struct RecordingStudio
     void edit(DAW software, StudioComputer computerModel);
     void mix(StudioConsole console, DAW software);
 };
+
+RecordingStudio::RecordingStudio()
+{
+
+}
 
 void RecordingStudio::record(DAW reaper,
                              StudioComputer macPro,
@@ -686,12 +701,11 @@ void RecordingStudio::mix(StudioConsole neve, DAW reaper)
 #include <iostream>
 int main()
 {
-Dog bob;
+    Dog bob;
     bob.bark("labrador", "friendly");
 
     TrackingRoom littleMountain;
-    littleMountain.reflectSound(34.23f, 23.5f,
-            23.5f, "oak", 23.4f);
+    littleMountain.reflectSound(34.23f, 23.5f, 23.5f, "oak", 23.4f);
 
     Computer myMac;
     myMac.record(32, "12-Core Xeon", 6000);
@@ -718,7 +732,8 @@ Dog bob;
     std::cout << "This guitar is a " << guitar.color << " model " << guitar.model << " made by " << guitar.brand << std::endl;
     std::cout << std::endl;
 
-
+    StudioConsole studioConsole;
+    
     Example::main();
     std::cout << "good to go!" << std::endl;
 }
