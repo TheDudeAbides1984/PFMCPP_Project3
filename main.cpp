@@ -47,26 +47,20 @@ int main()
 
 struct Dog
 {
-    Dog();
     std::string hairColor = "brown";
     std::string breed = "doberman";
     std::string temperament = "aggressive";
     float weight = 75.7f; // pounds
     float hairlength = 0.5f; // inches
+    
+    Dog();
 
     float run (float weight, std::string breed); // to determine a general speed
     void bark(std::string breed, std::string temperament);
     void whine(std::string breed, std::string temperament);
 };
 
-Dog::Dog()
-{
-    hairColor = "";
-    breed = "";
-    temperament  = "";
-    weight = 0.0f;
-    hairlength = 0.0f;
-}
+Dog::Dog() {}
 
 float Dog::run(float weightInPounds, std::string dogBreed)
 {
@@ -112,13 +106,7 @@ struct Cat
     void scratch(std::string breed, std::string temperament);
 };
 
-Cat::Cat()
-{
-    hairColor = "";
-    breed = "";
-    temperament  = "";
-    hairLength = 0.0f;
-}
+Cat::Cat() {}
 
 void Cat::meow(std::string catBreed, std::string mannerTemperament)
 {
@@ -152,14 +140,7 @@ struct Guitar
     int breakAString(int stringCount);
 };
 
-Guitar::Guitar()
-{
-    brand = "";
-    model = "";
-    color = "";
-    stringCount = 0;
-    pickupConfig = 0;
-}
+Guitar::Guitar() {}
 
 void Guitar::outputSound(int numOfPickups)
 {
@@ -188,14 +169,7 @@ struct Computer
     void edit(int ram, std::string cpu);
 };
 
-Computer::Computer()
-{
-    manufacturer = "";
-    operatingSystem = "";
-    ram = 0;
-    storage = 0;
-    cpu = "";
-}
+Computer::Computer() {}
 
 void Computer::calculate(int ramInGB, std::string cpuModel)
 {
@@ -241,14 +215,7 @@ struct StudioConsole
     void sumInputs(int inputCount, int busTotal, int auxOutTotal);
 };
 
-StudioConsole::StudioConsole()
-{
-    inputCount = 0;
-    auxOutTotal = 0;
-    busTotal = 0;
-    manufacturer = "";
-    model = "";
-}
+StudioConsole::StudioConsole() {}
 
 void StudioConsole::changeLevels(int inputChannelCount)
 {
@@ -293,21 +260,10 @@ struct StudioComputer
     };
 };
 
-StudioComputer::StudioComputer()
-{
-    manufacturer = "";
-    operatingSystem = "";
-    ram = 0;
-    storage = 0;
-    cpu = "";
-}
+StudioComputer::StudioComputer() {}
 
-StudioComputer::ComputerModel::ComputerModel()
-{
-    year = 0;
-    model = "";
-    coreCount = 0;
-}
+
+StudioComputer::ComputerModel::ComputerModel() {}
 
 int StudioComputer::appsInstalled(int ramInGB, int storageInGB)
 {
@@ -360,21 +316,9 @@ struct DAW
     };
 };
 
-DAW::DAW()
-{
-    company = "";
-    price = 0;
-    compatiblePlatforms = 0;
-    channelCount = 0;
-    maxPluginsPerChannel = 0;
-    versionNumber = 0.0f;
-}
+DAW::DAW() {}
 
-DAW::Software::Software()
-{
-    name = "";
-    versionNumber = 0.0;
-}
+DAW::Software::Software() {}
 
 void DAW::record(int maxChannelCount)
 {
@@ -421,14 +365,7 @@ struct TrackingRoom
     float storeGear(int squareFootage);
 };
 
-TrackingRoom::TrackingRoom()
-{
-    squareFootage = 0.0f;
-    ceilingHeight = 0.0f;
-    soundDampening = 0.0f;
-    floorMaterial = "";
-    rugCoverage = 0.0f;
-}
+TrackingRoom::TrackingRoom() {}
 
 float TrackingRoom::reflectSound(float squareFootageInFeet,
                                  float ceilingHeightInFeet,
@@ -488,16 +425,7 @@ struct StudioMonitor
     void speakerReference();
 };
 
-StudioMonitor::StudioMonitor()
-{
-    manufacturer = "";
-    price = 0.0f;
-    lowDriverSize = 0;
-    highDriverSize = 0;
-    lowestFreq = 0;
-    soundOutput = 0.0f;
-    maxPowerConsumption = 0;
-}
+StudioMonitor::StudioMonitor() {}
 
 void StudioMonitor::speakerReference(){}
 
