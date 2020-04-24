@@ -4,15 +4,15 @@
  Member initialization tasks
 
  Create a branch named Part4
- 
+
  1) initialize some of your member variables either in-class or in the Constructor member initializer list.
 
  2) make some of your member functions use those initialized member variables via std::cout statements.
- 
+
  3) click the [run] button.  Clear up any errors or warnings as best you can.
- 
+
  Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
- 
+
  Make a pull request after you make your first commit and pin the pull request link to our DM thread.
 
 send me a DM to check your pull request
@@ -22,37 +22,34 @@ send me a DM to check your pull request
 
 #include <iostream>
 namespace Example {
-struct UDT  
-{
-    int a; //a member variable
-    float b { 2.f }; //3) in-class initialization
-    UDT() : a(0) { } //3) 'constructor-initializer-list' member variable initialization
-    void printThing()  //the member function
+    struct UDT
     {
-        std::cout << "UDT::printThing() a:" << a << " b: " << b << std::endl;  //4) printing out something interesting
+        int a; //a member variable
+        float b { 2.f }; //3) in-class initialization
+        UDT() : a(0) { } //3) 'constructor-initializer-list' member variable initialization
+        void printThing()  //the member function
+        {
+            std::cout << "UDT::printThing() a:" << a << " b: " << b << std::endl;  //4) printing out something interesting
+        }
+    };
+
+    int main()
+    {
+        UDT foo; //instantiating a Foo in main()
+        foo.printThing(); //calling a member function of the instance that was instantiated.
+        return 0;
     }
-};
-
-int main()
-{
-    UDT foo; //instantiating a Foo in main()
-    foo.printThing(); //calling a member function of the instance that was instantiated.
-    return 0;
 }
-}
-
-//call Example::main()
-
 
 
 struct Dog
 {
-    std::string hairColor = "brown";
-    std::string breed = "doberman";
-    std::string temperament = "aggressive";
-    float weight = 75.7f; // pounds
-    float hairlength = 0.5f; // inches
-    
+    std::string hairColor;
+    std::string breed;
+    std::string temperament;
+    float weight;
+    float hairLength;
+
     Dog();
 
     float run (float weight, std::string breed); // to determine a general speed
@@ -60,7 +57,14 @@ struct Dog
     void whine(std::string breed, std::string temperament);
 };
 
-Dog::Dog() {}
+Dog::Dog() : hairColor  ("brown"),
+             breed ( "doberman"),
+             temperament ("aggressive"),
+             weight (75.7f), // pounds
+             hairLength (0.5f) // inches
+{
+
+}
 
 float Dog::run(float weightInPounds, std::string dogBreed)
 {
@@ -83,7 +87,7 @@ void Dog::bark(std::string dogBreed, std::string mannerTemperament)
     temperament = mannerTemperament;
 
     std::cout << "This dog is a " << temperament << " " << dogBreed
-    << ". Thankfully it doesn't bark too much. " << std::endl;
+              << ". Thankfully it doesn't bark too much. " << std::endl;
     std::cout << std::endl;
 }
 
@@ -129,18 +133,25 @@ void Cat::scratch(std::string catBreed, std::string mannerTemperament)
 struct Guitar
 {
     Guitar();
-    std::string brand = "Ibanez";
-    std::string model = "rg550";
-    std::string color = "purple";
-    int stringCount = 6;
-    int pickupConfig = 2; // number of pickups
+    std::string brand;
+    std::string model;
+    std::string color;
+    int stringCount;
+    int pickupConfig; // number of pickups
 
     void outputSound(int pickupConfig);
     void plugIntoAmp();
     int breakAString(int stringCount);
 };
 
-Guitar::Guitar() {}
+Guitar::Guitar() : brand("Ibanez"),
+                   model("rg550"),
+                   color("purple"),
+                   stringCount(6),
+                   pickupConfig(2)
+{
+
+}
 
 void Guitar::outputSound(int numOfPickups)
 {
@@ -190,7 +201,7 @@ void Computer::record(int ramInGB, std::string cpuModel, int storageInGB)
     else
     {
         std::cout << "Your machine has " << ramInGB << " ram and " << storageInGB
-        << " gb of hard drive space. It should work for recording." << std::endl;
+                  << " gb of hard drive space. It should work for recording." << std::endl;
         std::cout << std::endl;
     }
 }
@@ -204,18 +215,25 @@ void Computer::edit(int ramInGB, std::string cpuModel)
 struct StudioConsole
 {
     StudioConsole();
-    int inputCount = 48;
-    int auxOutTotal = 16;
-    int busTotal = 8;
-    std::string manufacturer = "API";
-    std::string model = "API 1608-II";
+    int inputCount;
+    int auxOutTotal;
+    int busTotal;
+    std::string manufacturer;
+    std::string model;
 
     void changeLevels(int inputCount);
     void changeTone();
     void sumInputs(int inputCount, int busTotal, int auxOutTotal);
 };
 
-StudioConsole::StudioConsole() {}
+StudioConsole::StudioConsole() : inputCount(48),
+                                 auxOutTotal(16),
+                                 busTotal(8),
+                                 manufacturer("API"),
+                                 model("API 1608-II")
+{
+
+}
 
 void StudioConsole::changeLevels(int inputChannelCount)
 {
@@ -230,7 +248,7 @@ void StudioConsole::sumInputs(int inputChannelCount, int summingBusTotal, int au
     busTotal = summingBusTotal;
     auxOutTotal = auxTotal;
 
-    std::cout << "The console has " << inputCount << " inputs and " << auxTotal 
+    std::cout << "The console has " << inputCount << " inputs and " << auxTotal
               << " aux outputs. Those inputs can be summed into a total of " << busTotal << " busses for mixdown." << std::endl;
     std::cout << std::endl;
 }
@@ -295,11 +313,11 @@ void StudioComputer::ComputerModel::renderFiles(int numOfCores)
 struct DAW
 {
     DAW();
-    std::string company = "Cockos";
-    int price = 60;
-    int compatiblePlatforms = 2; // Windows and Mac
-    int channelCount = 0; // no limit
-    int maxPluginsPerChannel = 0; //no limit
+    std::string company;
+    int price;
+    int compatiblePlatforms; // Windows and Mac
+    int channelCount; // no limit
+    int maxPluginsPerChannel; //no limit
     float versionNumber;
 
     void record(int channelCount);
@@ -310,13 +328,21 @@ struct DAW
     {
         Software();
         std::string name = "Reaper";
-        double versionNumber = 6.08;
+        float versionNumber = 6.08f;
 
-        double updateVersion(double versionNumber = 6.08);
+        float updateVersion(float versionNumber = 6.08f);
     };
 };
 
-DAW::DAW() {}
+DAW::DAW() : company("Cockos"),
+             price(60),
+             compatiblePlatforms(2),
+             channelCount(0),
+             maxPluginsPerChannel(0),
+             versionNumber(6.08f)
+{
+
+}
 
 DAW::Software::Software() {}
 
@@ -336,7 +362,7 @@ void DAW::mix(int maxChannelCount, int maxPlugsPerChannel)
     maxPluginsPerChannel = maxPlugsPerChannel;
 }
 
-double DAW::Software::updateVersion(double currentVersionNumber)
+float DAW::Software::updateVersion(float currentVersionNumber)
 {
     versionNumber = currentVersionNumber;
 
@@ -414,18 +440,27 @@ float TrackingRoom::storeGear(int squareFootageInFeet)
 struct StudioMonitor
 {
     StudioMonitor();
-    std::string manufacturer = "Blue Sky";
-    float price = 499.99f;
-    int lowDriverSize = 3; // inches
-    int highDriverSize = 1; // inches
-    int lowestFreq = 40;
-    float soundOutput = 100.0; // dB
-    int maxPowerConsumption = 240; // watts
+    std::string manufacturer;
+    float price;
+    int lowDriverSize; // inches
+    int highDriverSize; // inches
+    int lowestFreq;
+    float soundOutput; // dB
+    int maxPowerConsumption; // watts
 
     void speakerReference();
 };
 
-StudioMonitor::StudioMonitor() {}
+StudioMonitor::StudioMonitor() : manufacturer("Blue Sky"),
+                                 price(499.99f),
+                                 lowDriverSize(3),
+                                 highDriverSize(1),
+                                 lowestFreq(40),
+                                 soundOutput(100.0),
+                                 maxPowerConsumption(240)
+{
+
+}
 
 void StudioMonitor::speakerReference(){}
 
@@ -469,148 +504,6 @@ void RecordingStudio::mix(StudioConsole neve, DAW reaper)
     software = reaper;
 }
 
-/*
-1) Dog
-5 properties:
-    1) hair color
-    2) breed
-    3) temperment
-    4) size
-    5) hair length
-3 things it can do:
-    1) run
-    2) bark
-    3) whine
- */
-
-/*
-2) Cat
-5 properties:
-    1) hair color
-    2) breed
-    3) temperment
-    4) size
-    5) hair length
-3 things it can do:
-    1) meow
-    2) purr
-    3) scratch
- */
-
-/*
-3) Guitar
-5 properties:
-    1) make
-    2) model
-    3) color
-    4) string count
-    5) pickup config
-3 things it can do:
-    1) output sound
-    2) plug into amp
-    3) break a string
- */
-
-/*
-4) Computer
-5 properties:
-    1) manufacturer
-    2) OS
-    3) amount of ram
-    4) amount of storage
-    5) cpu
-3 things it can do:
-    1) calculate
-    2) record
-    3) edit
- */
-
-/*
-5) Studio Console
-5 properties:
-    1) input count
-    2) aux out total
-    3) bus total
-    4) manufacturer
-    5) model
-3 things it can do:
-    1) change levels
-    2) change tone
-    3) sum inputs 
- */
-
-/*
-6) Studio Computer
-5 properties:
-    1) manufacturer
-    2) OS
-    3) amount of ram
-    4) amount of storage
-    5) cpu
-3 things it can do:
-    1) host apps
-    2) make calculations
-    3) store files
- */
-
-/*
-7) DAW
-5 properties:
-    1) company
-    2) price
-    3) compatible platforms
-    4) channel count
-    5) max plugin per channel
-3 things it can do:
-    1) record
-    2) edit 
-    3) mix
- */
-
-/*
-8) Tracking room
-5 properties:
-    1) square footage
-    2) ceiling height
-    3) sound dampening
-    4) floor material
-    5) amount of rug coverage on floor
-3 things it can do:
-    1) reflect sound
-    2) absorb sound
-    3) accomodate musical equipment
- */
-
-/*
-9) Studio Monitor
-5 properties:
-    1) manufacturer
-    2) price
-    3) LF driver size
-    4) HF driver size
-    5) lowest output frequency
-3 things it can do:
-    1) output sound
-    2) consume power
-    3) provide reference to other speakers
- */
-
-/*
- 10) Recording Studio
-5 properties:
-    1) Console
-    2) computer
-    3) DAW
-    4) tracking room
-    5) Studio Monitor
-3 things it can do:
-    1) record
-    2) edit
-    3) mix
- */
-
-
-
 #include <iostream>
 int main()
 {
@@ -632,9 +525,9 @@ int main()
     blueSky.lowestFreq = 35;
 
     std::cout << "A good bang for buck set of monitors is the Blue Sky system. "
-                 << "It outputs down to " << blueSky.lowestFreq << " hz and has a "
-                 << blueSky.lowDriverSize << " inch woofer and a " << blueSky.highDriverSize
-                 << " inch horn." << std::endl;
+              << "It outputs down to " << blueSky.lowestFreq << " hz and has a "
+              << blueSky.lowDriverSize << " inch woofer and a " << blueSky.highDriverSize
+              << " inch horn." << std::endl;
     std::cout << std::endl;
 
     Guitar guitar;
@@ -646,7 +539,7 @@ int main()
     std::cout << std::endl;
 
     StudioConsole studioConsole;
-    
+
     Example::main();
     std::cout << "good to go!" << std::endl;
 }
