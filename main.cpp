@@ -72,9 +72,6 @@ namespace Example {
 
 //call Example::main() in main()
 
-
-
-
 struct Dog
 {
     std::string hairColor;
@@ -175,7 +172,6 @@ int Cat::sleep(int catNapIntervals)
     }
     return hoursICanStudy;
 }
-
 
 void Cat::meow(std::string catBreed, std::string mannerTemperament)
 {
@@ -344,7 +340,6 @@ struct StudioComputer
 };
 
 StudioComputer::StudioComputer() {}
-
 
 StudioComputer::ComputerModel::ComputerModel() {}
 
