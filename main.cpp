@@ -2,72 +2,72 @@
  Project 3 - Part 5 / 5
  video: Chapter 2 - Part 10
  Scope and Lifetime tasks
- 
+
 Create a branch named Part5
 
  video covered:
     variable scope and lifetime relative to { }
     while loops
     for loops()
- 
+
  tasks
- 
- 1) add some new member functions to your types. 
- 
+
+ 1) add some new member functions to your types.
+
  2) use while() or for() loops to do something interesting inside these new member functions.
          a) for example: have a loop that modifies a member variable of some object created outside the loop.
          b) when that member variable reaches a certain threshold, return it mid-loop.
          c) maybe use function parameters to control the starting value of that member variable or control the threshold
-         
+
  3) call those new member functions in main()
- 
+
  4) use std::cout statements to print out information about what your loops did.
- 
+
  5) click the [run] button.  Clear up any errors or warnings as best you can.
- 
+
  Commit your changes by clicking on the Source Control panel on the left, entering a message, and click [Commit and push].
- 
+
 Make a pull request after you make your first commit and pin the pull request link to our DM thread.
 
 send me a DM to check your pull request
 
  Wait for my code review.
- 
+
  example:
  */
 
 #include <iostream>
 namespace Example {
-struct Bar 
-{ 
-    int num = 0; 
-    Bar(int n) : num(n) { } 
-};
-struct Foo
-{
-    Bar scopeLifetimeFunc( int threshold, int startingVal ) //3), 4c) 
+    struct Bar
     {
-        Bar bar(startingVal);                //4a)
-        while( bar.num < threshold )         //4a) 
-        { 
-            bar.num += 1;                    //4a)
-            
-            if( bar.num >= threshold )       //4b)
-                return bar;
-        }
-        
-        return Bar {-1}; //if your startingValue >= threshold, the while loop never runs
-    }
-};
+        int num = 0;
+        Bar(int n) : num(n) { }
+    };
+    struct Foo
+    {
+        Bar scopeLifetimeFunc( int threshold, int startingVal ) //3), 4c)
+        {
+            Bar bar(startingVal);                //4a)
+            while( bar.num < threshold )         //4a)
+            {
+                bar.num += 1;                    //4a)
 
-int main()
-{
-    Foo foo;
-    auto bar = foo.scopeLifetimeFunc(3, 1);        //5) 
-    
-    std::cout << "bar.num: " << bar.num << std::endl;     //6) 
-    return 0;
-}
+                if( bar.num >= threshold )       //4b)
+                    return bar;
+            }
+
+            return Bar {-1}; //if your startingValue >= threshold, the while loop never runs
+        }
+    };
+
+    int main()
+    {
+        Foo foo;
+        auto bar = foo.scopeLifetimeFunc(3, 1);        //5)
+
+        std::cout << "bar.num: " << bar.num << std::endl;     //6)
+        return 0;
+    }
 }
 
 //call Example::main() in main()
@@ -80,23 +80,39 @@ struct Dog
     std::string hairColor;
     std::string breed;
     std::string temperament;
+    std::string name;
     float weight;
     float hairLength;
+    int idealWeight;
 
     Dog();
 
     float run (float weight, std::string breed); // to determine a general speed
     void bark(std::string breed, std::string temperament);
     void whine(std::string breed, std::string temperament);
+    float gainWeight(float currentWeight, int idealDogWeight);
+
 };
 
 Dog::Dog() : hairColor  ("brown"),
              breed ( "doberman"),
              temperament ("aggressive"),
              weight (75.7f), // pounds
-             hairLength (0.5f) // inches
+             hairLength (0.5f),
+             idealWeight (0)// inches
 {
 
+}
+
+float Dog::gainWeight(float currentWeight, int idealDogWeight)
+{
+    idealWeight = idealDogWeight;
+    weight = currentWeight;
+    for (int i = 0; currentWeight < idealDogWeight; i++)
+    {
+        currentWeight++;
+    }
+    return currentWeight;
 }
 
 float Dog::run(float weightInPounds, std::string dogBreed)
@@ -136,14 +152,30 @@ struct Cat
     std::string hairColor = "black";
     std::string breed = "domestic short hair";
     std::string temperament = "friendly";
-    float hairLength = 0.75f; // inches
+    float hairLength = 0.75f;
+    int napIntervals;// inches
 
     void meow(std::string breed, std::string temperament);
     void purr(std::string breed, std::string temperament);
     void scratch(std::string breed, std::string temperament);
+    int sleep(int catNapIntervals);
 };
 
 Cat::Cat() {}
+
+int Cat::sleep(int catNapIntervals)
+{
+    napIntervals = catNapIntervals;
+    int hoursICanStudy = 0;
+    for (int i = 0; i < 24; ++i)
+    {
+        if (i % napIntervals == 0) {
+            hoursICanStudy++;
+        }
+    }
+    return hoursICanStudy;
+}
+
 
 void Cat::meow(std::string catBreed, std::string mannerTemperament)
 {
@@ -537,11 +569,92 @@ void RecordingStudio::mix(StudioConsole neve, DAW reaper)
     software = reaper;
 }
 
+struct Wave
+{
+    Wave();
+    int height;
+    int timeTraveled; // hours
+    int distance; // miles
+    int calcWaveSpeed(int distanceTraveled, int timeWaveTraveled);
+    bool crash(int height, Wave wave);
+};
+
+Wave::Wave()
+{
+     height = 6;
+     distance = 0;
+     timeTraveled = 0;
+}
+
+int Wave::calcWaveSpeed(int distanceTraveled, int timeWaveTraveled)
+{
+    while (distanceTraveled != 0) {
+        return distanceTraveled / timeWaveTraveled;
+    }
+        return 0;
+}
+
+bool Wave::crash(int waveHeight, Wave wave)
+{
+    height = waveHeight;
+    bool willCrash = false;
+    while (wave.calcWaveSpeed(wave.distance, wave.timeTraveled) != 0 && wave.height >= 2)
+    {
+        willCrash = wave.height >= 2 && wave.calcWaveSpeed(wave.distance, wave.timeTraveled) >= 4;
+    }
+    return willCrash;
+}
+
 #include <iostream>
 int main()
 {
+    Wave pipelineWave;
+    pipelineWave.timeTraveled = 2;
+    pipelineWave.distance = 100;
+
+    std::cout << "To calculate the speed of a wave, divide the time traveled by the " 
+              << "distance. In this case the wave \nhas traveled " << pipelineWave.distance
+              << " in " << pipelineWave.timeTraveled << " hours. So the speed is "
+              << pipelineWave.calcWaveSpeed(pipelineWave.distance, pipelineWave.timeTraveled)
+              << " mph. \n" << std::endl;
+
+    Wave rockawayWave;
+    rockawayWave.height = 1;
+
+    rockawayWave.height = 1;
+    rockawayWave.crash(rockawayWave.height, rockawayWave);
+
+    std::cout << "A wave will only crash if it is at least 2ft high and traveling "
+              << "at least 4mph. Otherwise \nit will just be a ripple. This wave is "
+              << rockawayWave.height << "ft high and traveling at "
+              << rockawayWave.calcWaveSpeed(20, 10)
+              << "mph.\n" << std::endl;
+
+    if (rockawayWave.crash(rockawayWave.height, rockawayWave))
+    {
+        std::cout << "This wave will crash.\n" << std::endl;
+    }
+    else
+    {
+        std::cout << "This wave is too small to crash.\n" << std::endl;
+    }
+
     Dog bob;
     bob.bark("labrador", "friendly");
+    bob.name = "Bob";
+    bob.gainWeight(45.0f,60);
+
+    std::cout << bob.name << " is too skinny, and only weighs " << bob.weight
+              << " lbs. I'm putting him " << "on a weight gain diet so he can get up to "
+              << bob.idealWeight << " lbs. \n" << std::endl;
+
+    Cat whiskers;
+    whiskers.napIntervals = 4;
+
+    std::cout << "I can only study code when my cat is sleeping. She takes hour long naps every "
+              << whiskers.napIntervals << " hours. \nSo I can only only study " << whiskers.sleep(4)
+              << " hours per day." << "Otherwise she won't stay off the g!@#%$@ keyboard. \n"
+              << std::endl;
 
     TrackingRoom littleMountain;
     littleMountain.reflectSound(34.23f, 23.5f, 23.5f, "oak", 23.4f);
@@ -560,8 +673,7 @@ int main()
     std::cout << "A good bang for buck set of monitors is the Blue Sky system. "
               << "It outputs down to " << blueSky.lowestFreq << " hz and has a "
               << blueSky.lowDriverSize << " inch woofer and a " << blueSky.highDriverSize
-              << " inch horn." << std::endl;
-    std::cout << std::endl;
+              << " inch horn. \n" << std::endl;
 
     Guitar guitar;
     guitar.brand = "ESP";
