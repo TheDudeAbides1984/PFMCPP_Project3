@@ -150,7 +150,7 @@ struct Cat
     std::string breed = "domestic short hair";
     std::string temperament = "friendly";
     float hairLength = 0.75f;
-    int napIntervals;// inches
+    int napIntervals; // hours
 
     void meow(std::string breed, std::string temperament);
     void purr(std::string breed, std::string temperament);
