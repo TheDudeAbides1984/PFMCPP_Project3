@@ -640,16 +640,16 @@ int main()
     bob.gainWeight(45.0f,60);
 
     std::cout << bob.name << " is too skinny, and only weighs " << bob.weight
-              << " lbs. I'm putting him " << "on a weight gain diet so he can get up to "
+              << " lbs. I'm putting him on a weight gain diet so he can get up to "
               << bob.idealWeight << " lbs. \n" << std::endl;
 
     Cat whiskers;
     whiskers.napIntervals = 4;
 
-    std::cout << "I can only study code when my cat is sleeping. She takes hour long naps every "
-              << whiskers.napIntervals << " hours. \nSo I can only only study " << whiskers.sleep(4)
-              << " hours per day." << "Otherwise she won't stay off the g!@#%$@ keyboard. \n"
-              << std::endl;
+    std::cout << "I can only study code when my cat is sleeping. She takes hour "
+              << "long naps every " << whiskers.napIntervals << " hours. \nSo I can "
+              << "only only study " << whiskers.sleep(4) << " hours per day." 
+              << "Otherwise she won't stay off the g!@#%$@ keyboard. \n" << std::endl;
 
     TrackingRoom littleMountain;
     littleMountain.reflectSound(34.23f, 23.5f, 23.5f, "oak", 23.4f);
