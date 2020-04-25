@@ -105,9 +105,9 @@ float Dog::gainWeight(float currentWeight, int idealDogWeight)
 {
     idealWeight = idealDogWeight;
     weight = currentWeight;
-    for (int i = 0; currentWeight < idealDogWeight; i++)
+    for (int i = 0; currentWeight < idealDogWeight; ++i)
     {
-        currentWeight++;
+        ++currentWeight;
     }
     return currentWeight;
 }
@@ -167,7 +167,7 @@ int Cat::sleep(int catNapIntervals)
     for (int i = 0; i < 24; ++i)
     {
         if (i % napIntervals == 0) {
-            hoursICanStudy++;
+            ++hoursICanStudy;
         }
     }
     return hoursICanStudy;
@@ -569,33 +569,40 @@ struct Wave
     Wave();
     int height;
     int timeTraveled; // hours
-    int distance; // miles
-    int calcWaveSpeed(int distanceTraveled, int timeWaveTraveled);
+    int speed; // mph
+
+    int waveAccelerate(int waveSpeed, int timeWaveTraveled);    
     bool crash(int height, Wave wave);
 };
 
 Wave::Wave()
 {
      height = 6;
-     distance = 0;
-     timeTraveled = 0;
+     speed = 0;
+     speed = 0;
 }
 
-int Wave::calcWaveSpeed(int distanceTraveled, int timeWaveTraveled)
+int Wave::waveAccelerate(int waveSpeed, int timeWaveTraveled)
 {
-    while (distanceTraveled != 0) {
-        return distanceTraveled / timeWaveTraveled;
+    speed = waveSpeed;
+    timeTraveled = timeWaveTraveled;
+    int distanceTraveled = 0;
+
+    for (int i = 0; i < timeWaveTraveled; ++i)
+    {
+        waveSpeed += 4;
+        distanceTraveled = waveSpeed * timeWaveTraveled;
     }
-        return 0;
+    return distanceTraveled;
 }
 
 bool Wave::crash(int waveHeight, Wave wave)
 {
     height = waveHeight;
     bool willCrash = false;
-    while (wave.calcWaveSpeed(wave.distance, wave.timeTraveled) != 0 && wave.height >= 2)
+    while (wave.waveAccelerate(wave.speed, wave.timeTraveled) > 300 && wave.height >= 2)
     {
-        willCrash = wave.height >= 2 && wave.calcWaveSpeed(wave.distance, wave.timeTraveled) >= 4;
+        willCrash = wave.height >= 2 && wave.speed >= 4;
     }
     return willCrash;
 }
@@ -604,26 +611,27 @@ bool Wave::crash(int waveHeight, Wave wave)
 int main()
 {
     Wave pipelineWave;
-    pipelineWave.timeTraveled = 2;
-    pipelineWave.distance = 100;
+    pipelineWave.timeTraveled = 4;
+    pipelineWave.speed = 50;
 
-    std::cout << "To calculate the speed of a wave, divide the time traveled by the " 
-              << "distance. In this case the wave \nhas traveled " << pipelineWave.distance
-              << " in " << pipelineWave.timeTraveled << " hours. So the speed is "
-              << pipelineWave.calcWaveSpeed(pipelineWave.distance, pipelineWave.timeTraveled)
-              << " mph. \n" << std::endl;
+    std::cout << "For every hour a wave travels, its speed increases by 4mph. "
+              << "In this case the wave \nhas traveled for " << pipelineWave.timeTraveled
+              << " hours at a starting speed of " << pipelineWave.speed 
+              << " mph. So the wave has traveled "
+              << pipelineWave.waveAccelerate(pipelineWave.speed, pipelineWave.timeTraveled)
+              << " miles. \n" << std::endl;
 
     Wave rockawayWave;
     rockawayWave.height = 1;
 
     rockawayWave.height = 1;
+    rockawayWave.speed = 50;
     rockawayWave.crash(rockawayWave.height, rockawayWave);
 
-    std::cout << "A wave will only crash if it is at least 2ft high and traveling "
-              << "at least 4mph. Otherwise \nit will just be a ripple. This wave is "
-              << rockawayWave.height << "ft high and traveling at "
-              << rockawayWave.calcWaveSpeed(20, 10)
-              << "mph.\n" << std::endl;
+    std::cout << "A wave will only crash if it is at least 2ft high and has traveled "
+              << "at least 300 total miles to the shore. Otherwise it will just be "
+              << "a ripple. This wave is " << rockawayWave.height << " ft high and has "
+              << "a starting speed of " << rockawayWave.speed << " mph.\n" << std::endl;
 
     if (rockawayWave.crash(rockawayWave.height, rockawayWave))
     {
