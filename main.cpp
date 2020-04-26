@@ -1,3 +1,4 @@
+#include <iomanip>
 /*
  Project 3 - Part 5 / 5
  video: Chapter 2 - Part 10
@@ -383,6 +384,8 @@ struct DAW
     void record(int channelCount);
     void edit(int channelCount);
     void mix(int channelCount, int maxPluginsPerChannel);
+    float calcRecordStoragePerSecond(int numOfFiles, float maxRecordTime);
+
 
     struct Software
     {
@@ -405,6 +408,22 @@ DAW::DAW() : company("Cockos"),
 }
 
 DAW::Software::Software() {}
+
+float DAW::calcRecordStoragePerSecond(int numOfFiles, float maxRecordTime)
+{
+    float totalStorageInKB = 0;
+    float numOfSeconds = 0;
+
+    while (numOfSeconds < maxRecordTime)  
+    {
+        ++numOfSeconds;
+        totalStorageInKB = numOfFiles * numOfSeconds * 88.2f;
+        
+        // std::cout <<totalStorageInKB << std::endl;
+    }
+    float totalStorageInMB = totalStorageInKB * .0001f;
+    return totalStorageInMB;
+}
 
 void DAW::record(int maxChannelCount)
 {
@@ -610,6 +629,13 @@ bool Wave::crash(int waveHeight, Wave wave)
 #include <iostream>
 int main()
 {
+    DAW reaper;
+    
+
+    std::cout << "A wav file at 16 bit/ 44.1 K consumes 88.2KB in storage. So recording 10 files for 3 minutes will consume " 
+    << std::setprecision(2) << reaper.calcRecordStoragePerSecond(10, 60.0) << " MB in hard drive space.\n" << std::endl;
+
+
     Wave pipelineWave;
     pipelineWave.timeTraveled = 4;
     pipelineWave.speed = 50;
